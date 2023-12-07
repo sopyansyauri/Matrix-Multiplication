@@ -1,6 +1,6 @@
 # Matrix Multiplication Program in C
 
-## Ubuntu
+## Linux
 
 ### Compile Program:
 
