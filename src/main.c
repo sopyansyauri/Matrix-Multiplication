@@ -28,22 +28,22 @@ void display(double arr[][10], double m, double n)
     }
 }
 
-void multiply(double a[][10], double b[][10], double c[][10], double m, double n, double p, double q)
+void multiply(double a[][10], double b[][10], double c[][10], double rows_array_1, double cols_array_1, double rows_array_2, double cols_array_2)
 {
     int i, j, k;
-    for (i = 0; i < m; ++i)
+    for (i = 0; i < rows_array_2; ++i)
     {
-        for (j = 0; j < q; ++j)
+        for (j = 0; j < cols_array_2; ++j)
         {
             c[i][j] = 0;
         }
     }
 
-    for (i = 0; i < m; ++i)
+    for (i = 0; i < rows_array_1; ++i)
     {
-        for (j = 0; j < q; ++j)
+        for (j = 0; j < cols_array_2; ++j)
         {
-            for (k = 0; k < n; ++k)
+            for (k = 0; k < cols_array_1; ++k)
             {
                 c[i][j] += a[i][k] * b[k][j];
             }
@@ -53,44 +53,46 @@ void multiply(double a[][10], double b[][10], double c[][10], double m, double n
 
 int main()
 {
-    int m, n, p, q, i, j, k;
+    int rows_array_1, cols_array_1;
+    int rows_array_2, cols_array_2;
+    int i, j, k;
     double a[10][10], b[10][10], res[10][10];
 
     printf("Enter the no of rows and cols of first matrix\n");
-    scanf("%d%d", &m, &n);
+    scanf("%d%d", &rows_array_1, &cols_array_1);
     printf("Enter the number of rows and cols of the second matrix\n");
-    scanf("%d%d", &p, &q);
+    scanf("%d%d", &rows_array_2, &cols_array_2);
 
-    if (n != p)
+    if (cols_array_1 != rows_array_2)
     {
         printf("Matrix is incompatible for multiplication\n");
     }
     else
     {
         printf("Enter the elements of Matrix-A:\n");
-        for (i = 0; i < m; i++)
+        for (i = 0; i < rows_array_1; i++)
         {
-            for (j = 0; j < n; j++)
+            for (j = 0; j < cols_array_1; j++)
             {
                 scanf("%lf", &a[i][j]);
             }
         }
 
         printf("Enter the elements of Matrix-B:\n");
-        for (i = 0; i < p; i++)
+        for (i = 0; i < rows_array_2; i++)
         {
-            for (j = 0; j < q; j++)
+            for (j = 0; j < cols_array_2; j++)
             {
                 scanf("%lf", &b[i][j]);
             }
         }
 
-        for (i = 0; i < m; i++)
+        for (i = 0; i < rows_array_1; i++)
         {
-            for (j = 0; j < q; j++)
+            for (j = 0; j < cols_array_2; j++)
             {
                 res[i][j] = 0;
-                for (k = 0; k < p; k++)
+                for (k = 0; k < cols_array_1; k++)
                 {
                     res[i][j] += a[i][k] * b[k][j];
                 }
@@ -99,9 +101,9 @@ int main()
 
         printf("The product of the two matrices is:-\n");
 
-        for (i = 0; i < m; i++)
+        for (i = 0; i < cols_array_1; i++)
         {
-            for (j = 0; j < q; j++)
+            for (j = 0; j < cols_array_2; j++)
             {
                 printf("%lf\t", res[i][j]);
             }
